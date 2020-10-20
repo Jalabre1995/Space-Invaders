@@ -28,6 +28,32 @@ player.speed(0)
 player.setposition(0, -200)
 player.setheading(90)
 
+# Moving the player left and right
+playerspeed = 15
+
+def move_left():
+    # Takes the original corrdinate of x and subtract it by 15 to get x as the current position. 
+    x = player.xcor()
+    x -= playerspeed
+    if x < -280:
+        x = -280
+    player.setx(x)
+
+def move_right():
+    x = player.xcor()
+    x += playerspeed
+    if x > 280:
+        x = 280
+    player.setx(x)
+
+#create keyboard bindings
+turtle.listen()
+turtle.onkey(move_left, "Left")
+turtle.onkey(move_right, "Right")
+
+
+
+
 
 
 
