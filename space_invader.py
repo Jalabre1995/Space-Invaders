@@ -33,7 +33,7 @@ player.setheading(90)
 # Moving the player left and right
 playerspeed = 15
 # Choose the number of enemies
-number_of_enemies = 5
+number_of_enemies = 10
 #create an empty list of enemies
 
 enemies = []
@@ -115,15 +115,20 @@ while True:
         x += enemyspeed
         enemy.setx(x) 
         if enemy.xcor() > 280:
-             y = enemy.ycor()
-             y -= 40
-             enemyspeed *= -1
-             enemy.sety(y)
+            # Moves all of the enemies down 
+            # Create a nested loop within the loops
+            for e in enemies:
+                y = e.ycor()
+                y -= 40
+                e.sety(y)
+            enemyspeed *= -1
         if enemy.xcor() < -280:
-             y = enemy.ycor()
-             y -= 40
-             enemy.sety(y)
-             enemyspeed *= -1
+            #Create a nested loop within the loop
+            for e in enemies:
+                y = e.ycor()
+                y -= 40
+                e.sety(y)
+            enemyspeed *= -1
      # check for collision between thr bullet and the enemy
         if isCollision(bullet, enemy):
             bullet.hideturtle()
